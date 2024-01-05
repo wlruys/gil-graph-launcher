@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name=cholesky_bench        # Job name
+#SBATCH --nodes=1                 # Number of nodes
+#SBATCH --ntasks-per-node=1       # Number of tasks per node
+#SBATCH -p rtx
+#SBATCH --time=10:00:00           # Time limit for job
+#SBATCH --output=%j.out  # Output file name (%j expands to job ID)
+
+
+# Load any required modules
+module load cuda
+source /work2/06081/wlruys/frontera/mambaforge/etc/profile.d/conda.sh
+conda activate hcparla
+export PARLA_PREINIT_THREADS=0
+export PARLA_ENABLE_PYTHON_RUNAHEAD=0
+
+# Run your command(s) here
+./launcher.sh script.py args.txt
+#./launcher_nsys.sh script.py args.txt
