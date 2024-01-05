@@ -1,0 +1,6 @@
+logs/
+profile/
+output/
+
+*.nsys-rep
+*.sqlite
